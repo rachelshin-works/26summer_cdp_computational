@@ -1,0 +1,54 @@
+{
+  "benches": [
+    {
+      "id": "001",
+      "name": "Washington Square Park, north bench row",
+      "lat": 40.7308,
+      "lng": -73.9973,
+      "category": "parks",
+      "date": "2026-07-01",
+      "notes": "Cast iron slat bench beneath elm canopy",
+      "image": null
+    },
+    {
+      "id": "002",
+      "name": "Bryant Park, west lawn",
+      "lat": 40.7536,
+      "lng": -73.9832,
+      "category": "parks",
+      "date": "2026-07-02",
+      "notes": "Stone bench, south-facing",
+      "image": null
+    },
+    {
+      "id": "003",
+      "name": "Central Park, bench 847",
+      "lat": 40.7829,
+      "lng": -73.9654,
+      "category": "parks",
+      "date": "2026-07-02",
+      "notes": "Wooden bench along the bridle path",
+      "image": null
+    },
+    {
+      "id": "004",
+      "name": "Hudson River Park, Pier 45",
+      "lat": 40.7341,
+      "lng": -74.0113,
+      "category": "waterfront",
+      "date": "2026-07-03",
+      "notes": "Metal bench facing the river",
+      "image": null
+    },
+    {
+      "id": "005",
+      "name": "Union Square, south plaza",
+      "lat": 40.7359,
+      "lng": -73.9905,
+      "category": "plazas",
+      "date": "2026-07-05",
+      "notes": "Concrete bench at the subway entrance",
+      "image": null
+    }
+  ]
+}

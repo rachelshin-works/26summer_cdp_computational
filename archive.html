@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bench — archive</title>
+    <meta
+      name="description"
+      content="Catalog of bench locations across Manhattan."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page-content">
+    <header class="site-header">
+      <a href="index.html" class="site-title">bench</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html">maps</a>
+        <span class="nav-sep">·</span>
+        <a href="archive.html" class="active">archive</a>
+        <span class="nav-sep">·</span>
+        <a href="about.html">about</a>
+      </nav>
+    </header>
+
+    <main class="content-main">
+      <h1 class="page-heading">archive</h1>
+
+      <div class="archive-toolbar">
+        <div class="archive-filters" id="categoryFilters">
+          filter:
+          <a href="#" data-category="all" class="active">all</a>
+          ·
+          <a href="#" data-category="parks">parks</a>
+          ·
+          <a href="#" data-category="plazas">plazas</a>
+          ·
+          <a href="#" data-category="waterfront">waterfront</a>
+          ·
+          <a href="#" data-category="other">other</a>
+        </div>
+        <input
+          type="search"
+          class="archive-search"
+          id="archiveSearch"
+          placeholder="search"
+          aria-label="Search benches"
+        />
+      </div>
+
+      <ul class="archive-list" id="archiveList"></ul>
+      <p class="archive-empty" id="archiveEmpty" hidden>no benches found</p>
+    </main>
+
+    <script src="js/archive.js"></script>
+  </body>
+</html>
