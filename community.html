@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bench — community</title>
+    <meta
+      name="description"
+      content="Draw your own bench and place benches in the community city."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page-content">
+    <header class="site-header">
+      <a href="index.html" class="site-title">bench</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="maps.html">maps</a>
+        <span class="nav-sep">·</span>
+        <a href="archive.html">archive</a>
+        <span class="nav-sep">·</span>
+        <a href="community.html" class="active">community</a>
+        <span class="nav-sep">·</span>
+        <a href="about.html">about</a>
+      </nav>
+    </header>
+
+    <main class="content-main community-main">
+      <h1 class="page-heading">community</h1>
+
+      <nav class="community-tabs" aria-label="Community sections">
+        <a href="#drawing" class="community-tab active">drawing</a>
+        <span class="nav-sep">·</span>
+        <a href="#city" class="community-tab">city</a>
+        <span class="nav-sep">·</span>
+        <a href="#gallery" class="community-tab">gallery</a>
+      </nav>
+
+      <section class="community-section" id="drawing">
+        <h2 class="community-section-title">drawing</h2>
+        <p class="community-intro">
+          draw your own bench. click and drag on the canvas below.
+        </p>
+
+        <div class="community-toolbar">
+          <div class="community-tools">
+            <span class="community-tools-label">stroke</span>
+            <button type="button" class="tool-btn" data-weight="2">thin</button>
+            <button type="button" class="tool-btn active" data-weight="4">medium</button>
+            <button type="button" class="tool-btn" data-weight="8">thick</button>
+          </div>
+          <div class="community-actions">
+            <button type="button" class="tool-btn" id="clearCanvas">clear</button>
+            <button type="button" class="tool-btn" id="saveCanvas">save</button>
+          </div>
+        </div>
+
+        <div class="sketch-container" id="sketch-container"></div>
+      </section>
+
+      <section class="community-section" id="city">
+        <h2 class="community-section-title">city</h2>
+        <p class="community-intro">
+          click a block or street to place a random bench.
+        </p>
+
+        <div class="community-toolbar">
+          <div class="community-actions">
+            <button type="button" class="tool-btn" id="cityZoomIn">+</button>
+            <button type="button" class="tool-btn" id="cityZoomOut">−</button>
+            <button type="button" class="tool-btn" id="clearBenches">clear benches</button>
+          </div>
+        </div>
+
+        <div class="city-container" id="city-container">
+          <canvas id="cityCanvas" aria-label="Community city — click to place benches"></canvas>
+        </div>
+      </section>
+
+      <section class="community-section" id="gallery">
+        <h2 class="community-section-title">gallery</h2>
+        <p class="community-intro">
+          bench types from the archive.
+        </p>
+
+        <div class="gallery-container" id="gallery-container"></div>
+      </section>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="js/community.js"></script>
+    <script src="js/community-gallery.js"></script>
+    <script type="module" src="js/community-city.js"></script>
+  </body>
+</html>

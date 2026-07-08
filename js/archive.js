@@ -45,7 +45,7 @@
         "</span>";
 
       function navigate() {
-        window.location.href = "index.html?bench=" + bench.id;
+        window.location.href = "maps.html?bench=" + bench.id;
       }
 
       li.addEventListener("click", navigate);
