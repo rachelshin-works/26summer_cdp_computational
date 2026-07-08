@@ -1,12 +1,9 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { BENCH_MODELS } from "./config.js";
 
-const MODELS = [
-  "assets/iS9XFEEXfDZmXR77jrXT-.glb",
-  "assets/TR16miUSzq2L9oNuVKUMq.glb",
-  "assets/ifdbWyUKwlzNqxSWeo9vY.glb",
-];
+const MODELS = BENCH_MODELS;
 
 const canvas = document.getElementById("viewerCanvas");
 const counterEl = document.getElementById("modelCounter");
