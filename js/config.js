@@ -2,9 +2,15 @@ const REPO = "rachelshin-works/26summer_cdp_computational";
 const BRANCH = "main";
 
 function assetUrl(path) {
-  const isLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const host = window.location.hostname;
+  const isLocal = host === "localhost" || host === "127.0.0.1";
+  const isGitHubPages = host.endsWith("github.io");
+
   if (isLocal) return path;
-  return `https://media.githubusercontent.com/media/${REPO}/${BRANCH}/${path}`;
+  if (isGitHubPages) {
+    return `https://media.githubusercontent.com/media/${REPO}/${BRANCH}/${path}`;
+  }
+  return path;
 }
 
 export const BENCH_MODELS = [

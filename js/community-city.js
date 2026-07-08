@@ -62,9 +62,11 @@ const clickable = [];
 const benchTemplates = [];
 const placedBenches = [];
 const loader = new GLTFLoader();
+loader.setCrossOrigin("anonymous");
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let pointerDown = { x: 0, y: 0 };
+let modelsReady = false;
 
 function createCity() {
   const groundSize = GRID_SIZE * CELL_SIZE + 4;
@@ -110,6 +112,7 @@ function createCity() {
         edges,
         new THREE.LineBasicMaterial({ color: 0x333333 })
       );
+      wire.raycast = () => {};
       building.add(wire);
     }
   }
@@ -153,7 +156,7 @@ function loadBenchTemplates() {
 }
 
 function placeBench(x, y, z) {
-  if (benchTemplates.length === 0) return;
+  if (!modelsReady || benchTemplates.length === 0) return;
 
   const template =
     benchTemplates[Math.floor(Math.random() * benchTemplates.length)];
@@ -164,24 +167,37 @@ function placeBench(x, y, z) {
   placedBenches.push(bench);
 }
 
+function getTargetType(object) {
+  let current = object;
+  while (current) {
+    if (current.userData.type) return current;
+    current = current.parent;
+  }
+  return null;
+}
+
 function handleClick(event) {
   const rect = canvas.getBoundingClientRect();
   mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
   mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  const hits = raycaster.intersectObjects(clickable, false);
+  const hits = raycaster.intersectObjects(clickable, true);
 
-  if (hits.length === 0) return;
+  for (const hit of hits) {
+    const target = getTargetType(hit.object);
+    if (!target) continue;
 
-  const hit = hits[0];
-  const obj = hit.object;
+    if (target.userData.type === "building") {
+      const box = new THREE.Box3().setFromObject(target);
+      placeBench(target.position.x, box.max.y, target.position.z);
+      return;
+    }
 
-  if (obj.userData.type === "building") {
-    const box = new THREE.Box3().setFromObject(obj);
-    placeBench(obj.position.x, box.max.y, obj.position.z);
-  } else if (obj.userData.type === "ground") {
-    placeBench(hit.point.x, 0, hit.point.z);
+    if (target.userData.type === "ground") {
+      placeBench(hit.point.x, 0, hit.point.z);
+      return;
+    }
   }
 }
 
@@ -191,7 +207,7 @@ function clearBenches() {
 }
 
 function resize() {
-  const width = container.clientWidth;
+  const width = container.clientWidth || 720;
   const height = 480;
 
   camera.aspect = width / height;
@@ -235,11 +251,12 @@ zoomOutBtn.addEventListener("click", () => {
 window.addEventListener("resize", resize);
 
 createCity();
+resize();
+animate();
 
 loadBenchTemplates()
   .then(() => {
-    resize();
-    animate();
+    modelsReady = true;
   })
   .catch((err) => {
     console.error("Failed to load bench models:", err);
