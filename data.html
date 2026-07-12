@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bench — data</title>
+    <meta
+      name="description"
+      content="NYC public seating beeswarm — one circle per seat."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page-content">
+    <header class="site-header">
+      <a href="index.html" class="site-title">bench</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="maps.html">maps</a>
+        <span class="nav-sep">·</span>
+        <a href="archive.html">archive</a>
+        <span class="nav-sep">·</span>
+        <a href="community.html">community</a>
+        <span class="nav-sep">·</span>
+        <a href="data.html" class="active">data</a>
+        <span class="nav-sep">·</span>
+        <a href="about.html">about</a>
+      </nav>
+    </header>
+
+    <main class="content-main data-main">
+      <h1 class="page-heading">data</h1>
+      <p class="community-intro">
+        nyc public seating locations — one circle per seat. click a borough to
+        drill down.
+      </p>
+
+      <div class="data-toolbar">
+        <div class="data-legend" id="categoryLegend" aria-label="Category filters"></div>
+        <div class="data-actions">
+          <button type="button" class="tool-btn" id="selectAllCats">all</button>
+          <button type="button" class="tool-btn" id="clearCats">none</button>
+          <button type="button" class="tool-btn" id="resetView" hidden>back</button>
+        </div>
+      </div>
+
+      <div class="data-datebar" id="dateBar">
+        <span class="data-legend-label">installed</span>
+        <span class="data-date-label" id="dateStartLabel">—</span>
+        <div class="data-range" id="dateRange">
+          <div class="data-range-track">
+            <div class="data-range-fill" id="dateRangeFill"></div>
+          </div>
+          <input
+            type="range"
+            class="data-range-input"
+            id="dateMin"
+            aria-label="Start installation date"
+          />
+          <input
+            type="range"
+            class="data-range-input"
+            id="dateMax"
+            aria-label="End installation date"
+          />
+        </div>
+        <span class="data-date-label" id="dateEndLabel">—</span>
+        <button type="button" class="tool-btn" id="resetDates">reset</button>
+      </div>
+
+      <p class="data-status" id="dataStatus" aria-live="polite">loading…</p>
+
+      <div class="beeswarm-wrap" id="beeswarmWrap">
+        <canvas id="beeswarmCanvas" aria-label="Beeswarm chart of NYC seating"></canvas>
+        <div class="beeswarm-tooltip" id="beeswarmTooltip" hidden></div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script src="js/data-beeswarm.js"></script>
+  </body>
+</html>

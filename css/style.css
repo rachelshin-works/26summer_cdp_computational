@@ -591,6 +591,200 @@ body.page-content {
   cursor: default;
 }
 
+/* Data / beeswarm */
+
+.data-main {
+  max-width: 1100px;
+}
+
+.data-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.data-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 780px;
+}
+
+.data-legend-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: lowercase;
+  margin-right: 4px;
+}
+
+.data-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  text-transform: lowercase;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  opacity: 0.45;
+}
+
+.data-legend-item.active {
+  opacity: 1;
+  color: var(--text);
+  border-color: var(--text-secondary);
+}
+
+.data-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.data-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.data-datebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.data-date-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-width: 72px;
+}
+
+.data-date-label:last-of-type {
+  text-align: right;
+}
+
+.data-range {
+  position: relative;
+  flex: 1;
+  min-width: 180px;
+  height: 28px;
+}
+
+.data-range-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--border);
+}
+
+.data-range-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--text);
+}
+
+.data-range-input {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 28px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.data-range-input::-webkit-slider-runnable-track {
+  height: 2px;
+  background: transparent;
+}
+
+.data-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--black);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.data-range-input::-moz-range-track {
+  height: 2px;
+  background: transparent;
+  border: none;
+}
+
+.data-range-input::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--black);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.data-status {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.beeswarm-wrap {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+#beeswarmCanvas {
+  display: block;
+  width: 100%;
+  cursor: default;
+}
+
+.beeswarm-tooltip {
+  position: absolute;
+  z-index: 10;
+  min-width: 160px;
+  max-width: 240px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+
+.beeswarm-tooltip strong {
+  font-weight: 400;
+  display: block;
+  margin-bottom: 4px;
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {
