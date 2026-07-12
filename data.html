@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=20260712b" />
   </head>
   <body class="page-content">
     <header class="site-header">
@@ -49,8 +49,15 @@
       </div>
 
       <div class="data-datebar" id="dateBar">
-        <span class="data-legend-label">installed</span>
-        <span class="data-date-label" id="dateStartLabel">—</span>
+        <div class="data-datebar-head">
+          <span class="data-legend-label">installed</span>
+          <span class="data-date-range-text">
+            <span id="dateStartLabel">—</span>
+            <span class="data-date-sep">–</span>
+            <span id="dateEndLabel">—</span>
+          </span>
+          <button type="button" class="tool-btn" id="resetDates">reset</button>
+        </div>
         <div class="data-range" id="dateRange">
           <div class="data-range-track">
             <div class="data-range-fill" id="dateRangeFill"></div>
@@ -68,8 +75,7 @@
             aria-label="End installation date"
           />
         </div>
-        <span class="data-date-label" id="dateEndLabel">—</span>
-        <button type="button" class="tool-btn" id="resetDates">reset</button>
+        <div class="data-date-ticks" id="dateTicks" aria-hidden="true"></div>
       </div>
 
       <p class="data-status" id="dataStatus" aria-live="polite">loading…</p>
@@ -81,6 +87,6 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script src="js/data-beeswarm.js"></script>
+    <script src="js/data-beeswarm.js?v=20260712b"></script>
   </body>
 </html>

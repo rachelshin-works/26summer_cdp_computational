@@ -44,6 +44,7 @@
   const dateStartLabel = document.getElementById("dateStartLabel");
   const dateEndLabel = document.getElementById("dateEndLabel");
   const dateRangeFill = document.getElementById("dateRangeFill");
+  const dateTicksEl = document.getElementById("dateTicks");
   const resetDatesBtn = document.getElementById("resetDates");
 
   let allData = [];
@@ -472,6 +473,21 @@
       input.step = String(24 * 60 * 60 * 1000);
     });
 
+    // year tick labels
+    if (dateTicksEl) {
+      const years = d3.timeYear.range(
+        d3.timeYear.floor(new Date(minTick)),
+        d3.timeYear.offset(d3.timeYear.floor(new Date(maxTick)), 1)
+      );
+      const labels =
+        years.length > 1
+          ? years
+          : [new Date(minTick), new Date(maxTick)];
+      dateTicksEl.innerHTML = labels
+        .map((d) => "<span>" + d.getFullYear() + "</span>")
+        .join("");
+    }
+
     updateDateBarUI();
   }
 
@@ -521,9 +537,17 @@
 
   d3.csv(CSV_PATH)
     .then((rows) => {
+      if (!rows || !rows.length) {
+        throw new Error("CSV empty");
+      }
+
       allData = rows
         .map(parseRow)
         .filter((d) => BOROS.includes(d.boro) && !Number.isNaN(d.lat));
+
+      if (!allData.length) {
+        throw new Error("No valid seating rows");
+      }
 
       colorField = detectColorField(allData);
       categories = Array.from(
@@ -537,6 +561,9 @@
     })
     .catch((err) => {
       console.error(err);
-      statusEl.textContent = "failed to load seating data";
+      statusEl.textContent =
+        "failed to load seating data — check console / csv path";
+      legendEl.innerHTML =
+        '<span class="data-legend-label">subtype filters unavailable</span>';
     });
 })();
