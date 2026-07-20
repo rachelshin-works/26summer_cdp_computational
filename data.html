@@ -6,7 +6,7 @@
     <title>bench — data</title>
     <meta
       name="description"
-      content="NYC public seating beeswarm — one circle per seat."
+      content="NYC public seating — hierarchical pack and beeswarm."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css?v=20260712b" />
+    <link rel="stylesheet" href="css/style.css?v=20260719b" />
   </head>
   <body class="page-content">
     <header class="site-header">
@@ -34,59 +34,121 @@
 
     <main class="content-main data-main">
       <h1 class="page-heading">data</h1>
-      <p class="community-intro">
-        nyc public seating locations — one circle per seat. click a borough to
-        drill down.
-      </p>
 
-      <div class="data-toolbar">
-        <div class="data-legend" id="categoryLegend" aria-label="Category filters"></div>
-        <div class="data-actions">
-          <button type="button" class="tool-btn" id="selectAllCats">all</button>
-          <button type="button" class="tool-btn" id="clearCats">none</button>
-          <button type="button" class="tool-btn" id="resetView" hidden>back</button>
-        </div>
-      </div>
+      <nav class="community-tabs data-tabs" aria-label="Data sections">
+        <a
+          href="#relational"
+          class="community-tab active"
+          data-data-tab="relational"
+          >relational structures</a
+        >
+        <span class="nav-sep">·</span>
+        <a href="#density" class="community-tab" data-data-tab="density"
+          >density</a
+        >
+      </nav>
 
-      <div class="data-datebar" id="dateBar">
-        <div class="data-datebar-head">
-          <span class="data-legend-label">installed</span>
-          <span class="data-date-range-text">
-            <span id="dateStartLabel">—</span>
-            <span class="data-date-sep">–</span>
-            <span id="dateEndLabel">—</span>
-          </span>
-          <button type="button" class="tool-btn" id="resetDates">reset</button>
-        </div>
-        <div class="data-range" id="dateRange">
-          <div class="data-range-track">
-            <div class="data-range-fill" id="dateRangeFill"></div>
+      <!-- Relational / hierarchy pack -->
+      <section class="data-section" id="relational">
+        <h2 class="community-section-title"></h2>
+        <p class="community-intro"></p>
+
+        <div class="data-toolbar">
+          <div
+            class="data-legend"
+            id="packLegend"
+            aria-label="Subtype filters"
+          ></div>
+          <div class="data-actions">
+            <button type="button" class="tool-btn" id="packSelectAll">
+              all
+            </button>
+            <button type="button" class="tool-btn" id="packClear">none</button>
+            <button type="button" class="tool-btn" id="packBack" hidden>
+              back
+            </button>
+            <button type="button" class="tool-btn" id="packReset">reset</button>
           </div>
-          <input
-            type="range"
-            class="data-range-input"
-            id="dateMin"
-            aria-label="Start installation date"
-          />
-          <input
-            type="range"
-            class="data-range-input"
-            id="dateMax"
-            aria-label="End installation date"
-          />
         </div>
-        <div class="data-date-ticks" id="dateTicks" aria-hidden="true"></div>
-      </div>
 
-      <p class="data-status" id="dataStatus" aria-live="polite">loading…</p>
+        <p class="data-status" id="packStatus" aria-live="polite">loading…</p>
+        <p class="data-breadcrumb" id="packBreadcrumb">NYC</p>
 
-      <div class="beeswarm-wrap" id="beeswarmWrap">
-        <canvas id="beeswarmCanvas" aria-label="Beeswarm chart of NYC seating"></canvas>
-        <div class="beeswarm-tooltip" id="beeswarmTooltip" hidden></div>
-      </div>
+        <div class="pack-wrap" id="packWrap">
+          <svg id="packSvg" aria-label="Hierarchical seating pack chart"></svg>
+          <div class="beeswarm-tooltip" id="packTooltip" hidden></div>
+        </div>
+      </section>
+
+      <!-- Density / beeswarm -->
+      <section class="data-section" id="density" hidden>
+        <h2 class="community-section-title"></h2>
+        <p class="community-intro"></p>
+
+        <div class="data-toolbar">
+          <div
+            class="data-legend"
+            id="categoryLegend"
+            aria-label="Category filters"
+          ></div>
+          <div class="data-actions">
+            <button type="button" class="tool-btn" id="selectAllCats">
+              all
+            </button>
+            <button type="button" class="tool-btn" id="clearCats">none</button>
+            <button type="button" class="tool-btn" id="resetView" hidden>
+              back
+            </button>
+          </div>
+        </div>
+
+        <div class="data-datebar" id="dateBar">
+          <div class="data-datebar-head">
+            <span class="data-legend-label">installed</span>
+            <span class="data-date-range-text">
+              <span id="dateStartLabel">—</span>
+              <span class="data-date-sep">–</span>
+              <span id="dateEndLabel">—</span>
+            </span>
+            <button type="button" class="tool-btn" id="resetDates">
+              reset
+            </button>
+          </div>
+          <div class="data-range" id="dateRange">
+            <div class="data-range-track">
+              <div class="data-range-fill" id="dateRangeFill"></div>
+            </div>
+            <input
+              type="range"
+              class="data-range-input"
+              id="dateMin"
+              aria-label="Start installation date"
+            />
+            <input
+              type="range"
+              class="data-range-input"
+              id="dateMax"
+              aria-label="End installation date"
+            />
+          </div>
+          <div class="data-date-ticks" id="dateTicks" aria-hidden="true"></div>
+        </div>
+
+        <p class="data-status" id="dataStatus" aria-live="polite">loading…</p>
+
+        <div class="beeswarm-wrap" id="beeswarmWrap">
+          <canvas
+            id="beeswarmCanvas"
+            aria-label="Beeswarm chart of NYC seating"
+          ></canvas>
+          <div class="beeswarm-tooltip" id="beeswarmTooltip" hidden></div>
+        </div>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script src="js/data-beeswarm.js?v=20260712b"></script>
+    <script src="js/data-hierarchy.js?v=20260719b"></script>
+    <script src="js/data-beeswarm.js?v=20260719b"></script>
+    <script src="js/data-tabs.js?v=20260719b"></script>
   </body>
 </html>

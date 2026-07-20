@@ -597,6 +597,50 @@ body.page-content {
   max-width: 1100px;
 }
 
+.data-tabs {
+  margin-bottom: 32px;
+}
+
+.data-section {
+  margin-bottom: 48px;
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.data-section[hidden] {
+  display: none !important;
+}
+
+.data-breadcrumb {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: lowercase;
+}
+
+.pack-wrap {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+#packSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  background: #000000;
+}
+
+.pack-label {
+  fill: #cccccc;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: lowercase;
+}
+
 .data-toolbar {
   display: flex;
   flex-wrap: wrap;
