@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bench — chinatown</title>
+    <meta
+      name="description"
+      content="Mapbox canvas: Chinatown boundary and public seating."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20260722a" />
+  </head>
+  <body class="page-map page-chinatown">
+    <header class="site-header">
+      <a href="index.html" class="site-title">bench</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="maps.html">maps</a>
+        <span class="nav-sep">·</span>
+        <a href="chinatown.html" class="active">chinatown</a>
+        <span class="nav-sep">·</span>
+        <a href="archive.html">archive</a>
+        <span class="nav-sep">·</span>
+        <a href="community.html">community</a>
+        <span class="nav-sep">·</span>
+        <a href="data.html">data</a>
+        <span class="nav-sep">·</span>
+        <a href="about.html">about</a>
+      </nav>
+    </header>
+
+    <div class="map-container chinatown-map-container">
+      <div
+        id="chinatown-map"
+        role="application"
+        aria-label="Chinatown Mapbox canvas"
+      ></div>
+    </div>
+
+    <aside class="chinatown-panel" aria-label="Map controls">
+      <h1 class="chinatown-title">chinatown</h1>
+      <p class="chinatown-copy">
+        a situated reading of manhattan’s chinatown edge — boundary line from
+        geojson, public seating points from nyc dot.
+      </p>
+
+      <label class="chinatown-field">
+        <span>search street</span>
+        <input
+          type="search"
+          id="searchFeature"
+          placeholder="canal, bowery…"
+          autocomplete="off"
+        />
+      </label>
+
+      <div class="chinatown-actions">
+        <button type="button" class="tool-btn" id="fitToData">fit</button>
+        <button type="button" class="tool-btn" id="resetFilters">reset</button>
+      </div>
+
+      <p class="chinatown-meta" id="chinatownMeta">loading…</p>
+      <p class="chinatown-note">
+        set your mapbox token in <code>js/mapbox-token.js</code>
+      </p>
+    </aside>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
+    <script src="js/mapbox-token.js"></script>
+    <script src="js/chinatown-map.js"></script>
+  </body>
+</html>

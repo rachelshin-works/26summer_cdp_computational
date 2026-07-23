@@ -579,6 +579,182 @@ body.page-content {
   cursor: pointer;
 }
 
+/* Chinatown / Mapbox */
+
+.page-chinatown .map-container {
+  background: #000;
+}
+
+#chinatown-map {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.chinatown-panel {
+  position: fixed;
+  top: calc(var(--header-height) + 24px);
+  right: 24px;
+  z-index: 900;
+  width: min(300px, calc(100vw - 48px));
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.88);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.chinatown-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+.chinatown-copy {
+  margin: 0 0 18px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.chinatown-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: lowercase;
+}
+
+.chinatown-field input {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  padding: 8px 10px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.chinatown-field input:focus {
+  outline: 1px solid var(--text);
+  outline-offset: 0;
+}
+
+.chinatown-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.chinatown-meta {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.chinatown-note {
+  margin: 0;
+  font-size: 11px;
+  color: #666;
+}
+
+.chinatown-note code {
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.chinatown-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 950;
+  max-width: 360px;
+  padding: 20px;
+  background: #111;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.mapboxgl-popup.chinatown-popup .mapboxgl-popup-content {
+  background: #000;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 12px 14px;
+  font-family: "Datatype", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.mapboxgl-popup.chinatown-popup .mapboxgl-popup-tip {
+  border-top-color: #333;
+}
+
+.chinatown-popup .popup-kicker {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.chinatown-popup strong {
+  font-weight: 400;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.chinatown-popup p {
+  margin: 0;
+  color: #ccc;
+}
+
+.mapboxgl-ctrl-group {
+  border-radius: 0 !important;
+  background: #000 !important;
+  border: 1px solid #fff !important;
+}
+
+.mapboxgl-ctrl-group button {
+  background: #000 !important;
+  border-color: #333 !important;
+}
+
+.mapboxgl-ctrl-group button + button {
+  border-top: 1px solid #333 !important;
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon,
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-out .mapboxgl-ctrl-icon {
+  filter: invert(1);
+}
+
+.mapboxgl-ctrl-scale {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border-color: #666 !important;
+  color: #999 !important;
+  font-family: "Datatype", Helvetica, Arial, sans-serif !important;
+}
+
+@media (max-width: 720px) {
+  .chinatown-panel {
+    top: auto;
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+    max-height: 42vh;
+    overflow: auto;
+  }
+}
+
 .gallery-container {
   width: 100%;
   border: 1px solid var(--border);
